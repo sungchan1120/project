@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/data/my_location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -9,6 +10,8 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  late double latitude3;
+  late double longgitude3;
   @override
   void initState() {
     super.initState();
@@ -17,15 +20,12 @@ class _LoadingState extends State<Loading> {
   }
 
   void getLocation() async {
-    try {
-      LocationPermission permission = await Geolocator.requestPermission();
-      Geolocator.requestPermission();
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
-      print(position);
-    } catch (e) {
-      print('인터넷 연결 문제');
-    }
+    MyLocation myLocation = MyLocation();
+    await myLocation.getMyCurrentLocation();
+    latitude3 = myLocation.latitude2;
+    longgitude3 = myLocation.longitude2;
+    print(latitude3);
+    print(longgitude3);
   }
 
   void fetchData() async {
@@ -35,6 +35,11 @@ class _LoadingState extends State<Loading> {
       String jsonData = response.body;
       var myJson = jsonDecode(jsonData)['weather'][0]['description'];
       print(myJson);
+
+      var wind = jsonDecode(jsonData)['windy']['speed'];
+      print(wind);
+    } else {
+      print(response.statusCode);
     }
   }
 
