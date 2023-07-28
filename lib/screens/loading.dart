@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/data/my_location.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:project/data/network.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -16,7 +15,6 @@ class _LoadingState extends State<Loading> {
   void initState() {
     super.initState();
     getLocation();
-    fetchData();
   }
 
   void getLocation() async {
@@ -26,22 +24,23 @@ class _LoadingState extends State<Loading> {
     longgitude3 = myLocation.longitude2;
     print(latitude3);
     print(longgitude3);
+
+    Network network = Network(
+        'https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1');
+    var weatherData = await network.getJsonData();
+    print('weatherData');
   }
 
-  void fetchData() async {
-    http.Response response = await http.get(Uri.parse(
-        'https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1'));
-    if (response.statusCode == 200) {
-      String jsonData = response.body;
-      var myJson = jsonDecode(jsonData)['weather'][0]['description'];
-      print(myJson);
+  // void fetchData() async {
 
-      var wind = jsonDecode(jsonData)['windy']['speed'];
-      print(wind);
-    } else {
-      print(response.statusCode);
-    }
-  }
+  //     var myJson = parsingData['weather'][0]['description'];
+  //     print(myJson);
+  //     var wind = parsingData(jsonData)['windy']['speed'];
+  //     print(wind);
+  //   } else {
+  //     print(response.statusCode);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
