@@ -3,6 +3,8 @@ import 'package:project/data/my_location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:project/data/network.dart';
 
+const apikey = '848066366a50df17d81b4e2340b02969';
+
 class Loading extends StatefulWidget {
   @override
   _LoadingState createState() => _LoadingState();
@@ -26,7 +28,7 @@ class _LoadingState extends State<Loading> {
     print(longgitude3);
 
     Network network = Network(
-        'https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1');
+        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude3&lon=$longgitude3&appid=$apikey');
     var weatherData = await network.getJsonData();
     print('weatherData');
   }
