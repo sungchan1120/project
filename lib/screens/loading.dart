@@ -30,7 +30,7 @@ class _LoadingState extends State<Loading> {
     Network network = Network(
         'https://api.openweathermap.org/data/2.5/weather?lat=$latitude3&lon=$longgitude3&appid=$apikey');
     var weatherData = await network.getJsonData();
-    print('weatherData');
+    print(weatherData);
   }
 
   // void fetchData() async {
