@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class WeatherScreen extends StatefulWidget {
   WeatherScreen({this.parseWeatherData});
@@ -27,21 +28,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('$cityName', style: TextStyle(fontSize: 30)),
-              SizedBox(
-                height: 20.0,
-              ),
-              Text(
-                '$temp',
-                style: TextStyle(fontSize: 30),
-              )
-            ],
-          ),
+      appBar: AppBar(
+        title: Text(''),
+      ),
+      body: Container(
+        child: Stack(
+          children: [
+            Image.asset(
+              'assets/images/background.jpg',
+              fit: BoxFit.cover,
+            )
+          ],
         ),
       ),
     );
