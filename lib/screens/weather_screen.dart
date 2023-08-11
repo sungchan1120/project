@@ -124,8 +124,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             ),
                             Row(
                               children: [
-                                SvgPicture.asset(
-                                    'assets/images/Cloud-Lightning.svg')
+                                SvgPicture.asset('Cloud-Lightning.svg')
                               ],
                             )
                           ],
