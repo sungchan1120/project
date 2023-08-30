@@ -1,0 +1,43 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flutter: Attach to Device",
+            "type": "dart",
+            "request": "attach"
+        },
+
+        {
+            "name": "project",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "project (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "project (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "iOS",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": ["--flavor", "development"],
+            "deviceName": "iPhone 12 Pro Max", // 원하는 iOS 시뮬레이터 디바이스 이름으로 수정
+            "useTerminal": true
+        }
+    ]
+}
+
+
+
+
+
+

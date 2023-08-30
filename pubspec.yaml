@@ -66,6 +66,20 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/background.jpg
+    - assets/images/cloud_lightning.svg
+    - assets/images/cloud_moon.svg
+    - assets/images/cloud_rain.svg
+    - assets/images/cloud_sun.svg
+    - assets/images/cloud_snow_alt.svg
+    - assets/images/icon.svg
+    - assets/images/sun_fill.svg
+    - assets/images/fair.png
+    - assets/images/good.png
+    - assets/images/moderate.png
+    - assets/images/poor.png
+    - assets/images/bad.png
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

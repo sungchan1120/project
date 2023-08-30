@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Model {
-  Widget getWeatherIcon(int condition) {
+  Widget? getWeatherIcon(int condition) {
     if (condition < 300) {
       return SvgPicture.asset(
         'assets/images/colud_lightning.svg',
@@ -17,7 +17,7 @@ class Model {
       );
     } else if (condition <= 804) {
       return SvgPicture.asset(
-        'assets/images/colud_sun.svg',
+        'assets/images/sun_fill.svg',
       );
     }
     return Text("Weather icon not available");
