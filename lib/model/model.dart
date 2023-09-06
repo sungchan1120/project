@@ -17,7 +17,7 @@ class Model {
       );
     } else if (condition <= 804) {
       return SvgPicture.asset(
-        'assets/images/sun_fill.svg',
+        'assets/images/cloud_sun.svg',
       );
     }
     return Text("Weather icon not available");

@@ -18,6 +18,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   int? temp;
   Widget? icon;
   var date = DateTime.now();
+  String? des;
   @override
   void initState() {
     super.initState();
@@ -27,9 +28,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
   void updateData(dynamic weatherData) {
     double temp2 = weatherData['main']['temp'];
     int condition = weatherData['weather'][0]['id'];
+    des = weatherData['weather'][0]['description'];
     temp = temp2.round();
     cityName = weatherData['name'];
-    icon = model.getWeatherIcon(condition);
+    setState(() {
+      icon = model.getWeatherIcon(condition);
+    });
     print(temp);
     print(cityName);
   }
@@ -130,11 +134,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             Row(
                               children: [
                                 icon!,
+                                if (icon != null) icon!,
                                 SizedBox(
                                   width: 0,
                                 ),
                                 Text(
-                                  'clear sky',
+                                  '$des',
                                   style: GoogleFonts.lato(
                                       fontSize: 16, color: Colors.white),
                                 )
