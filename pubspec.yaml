@@ -73,6 +73,7 @@ flutter:
     - assets/images/cloud_snow_alt.svg
     - assets/images/icon.svg
     - assets/images/sun_fill.svg
+    - assets/images/sun.svg
     - assets/images/fair.png
     - assets/images/good.png
     - assets/images/moderate.png

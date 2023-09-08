@@ -13,7 +13,7 @@ class Model {
       );
     } else if (condition == 800) {
       return SvgPicture.asset(
-        'assets/images/sun.svg',
+        'assets/images/sun_fill.svg',
       );
     } else if (condition <= 804) {
       return SvgPicture.asset(

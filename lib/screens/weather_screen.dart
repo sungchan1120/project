@@ -134,7 +134,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             Row(
                               children: [
                                 icon!,
-                                if (icon != null) icon!,
                                 SizedBox(
                                   width: 0,
                                 ),
