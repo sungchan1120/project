@@ -13,7 +13,8 @@ class Model {
       );
     } else if (condition == 800) {
       return SvgPicture.asset(
-        'assets/images/sun_fill.svg',
+        'assets/images/weather-background.jpg',
+        fit: BoxFit.cover,
       );
     } else if (condition <= 804) {
       return SvgPicture.asset(

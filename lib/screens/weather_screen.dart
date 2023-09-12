@@ -64,14 +64,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
         ],
       ),
       body: Container(
+        color: Colors.black26,
         child: Stack(
           children: [
-            Image.asset(
-              'assets/images/background.jpg',
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            ),
             Container(
               padding: EdgeInsets.all(20),
               child: Column(
@@ -122,25 +117,30 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               )
                             ]),
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
                               '$temp\u2103',
                               style: GoogleFonts.lato(
                                   fontSize: 85,
+                                  height: 5.66,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 icon!,
                                 SizedBox(
                                   width: 0,
+                                  height: 10,
                                 ),
                                 Text(
                                   '$des',
                                   style: GoogleFonts.lato(
-                                      fontSize: 16, color: Colors.white),
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
                                 )
                               ],
                             )
