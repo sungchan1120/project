@@ -16,6 +16,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Model model = Model();
   String? cityName;
   int? temp;
+  Widget? background;
   Widget? icon;
   var date = DateTime.now();
   String? des;
@@ -32,6 +33,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
     temp = temp2.round();
     cityName = weatherData['name'];
     setState(() {
+      background = model.getWeatherBackground(condition);
+    });
+
+    setState(() {
       icon = model.getWeatherIcon(condition);
     });
     print(temp);
@@ -45,6 +50,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         // title: Text(''),
@@ -64,9 +70,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
         ],
       ),
       body: Container(
-        color: Colors.black26,
         child: Stack(
           children: [
+            background ?? Container(),
             Container(
               padding: EdgeInsets.all(20),
               child: Column(

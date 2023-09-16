@@ -1,7 +1,50 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
 
 class Model {
+  Widget? getWeatherBackground(int condition) {
+    if (condition < 300) {
+      return Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.black, Colors.blue],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+      );
+    } else if (condition < 600) {
+      return Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.black, Colors.white],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+      );
+    } else if (condition == 800) {
+      return Container(
+        color: Colors.yellow,
+      );
+    } else if (condition <= 804) {
+      return Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.black, Colors.green],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+      );
+    }
+    // 기본 배경: 검은색 배경
+    return Container(
+      color: Colors.black,
+    );
+  }
+
   Widget? getWeatherIcon(int condition) {
     if (condition < 300) {
       return SvgPicture.asset(
@@ -9,11 +52,11 @@ class Model {
       );
     } else if (condition < 600) {
       return SvgPicture.asset(
-        'assets/images/colud_snow_alt.svg',
+        'assets/images/sun_fill.svg',
       );
     } else if (condition == 800) {
       return SvgPicture.asset(
-        'assets/images/weather-background.jpg',
+        'assets/images/sun_fill.svg',
         fit: BoxFit.cover,
       );
     } else if (condition <= 804) {
