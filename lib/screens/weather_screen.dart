@@ -17,6 +17,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   String? cityName;
   int? temp;
   Widget? background;
+  Widget? weatherText;
   Widget? icon;
   var date = DateTime.now();
   String? des;
@@ -34,6 +35,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
     cityName = weatherData['name'];
     setState(() {
       background = model.getWeatherBackground(condition);
+    });
+
+    setState(() {
+      weatherText = getweatherText(condition);
     });
 
     setState(() {
@@ -123,6 +128,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               )
                             ]),
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
@@ -133,13 +139,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
                             ),
-                            Row(
+                            Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                SizedBox(
+                                  height: 1,
+                                ),
                                 icon!,
                                 SizedBox(
-                                  width: 0,
-                                  height: 10,
+                                  height: 1,
                                 ),
                                 Text(
                                   '$des',
@@ -147,7 +155,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                     fontSize: 16,
                                     color: Colors.white,
                                   ),
-                                )
+                                ),
+                                SizedBox(
+                                  height: 1,
+                                ),
+                                weatherText ??
+                                    Text("Weather text not available"),
                               ],
                             )
                           ],

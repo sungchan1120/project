@@ -26,7 +26,7 @@ class Model {
       );
     } else if (condition == 800) {
       return Container(
-        color: Colors.yellow,
+        color: Color.fromARGB(148, 0, 0, 0),
       );
     } else if (condition <= 804) {
       return Container(
@@ -66,4 +66,19 @@ class Model {
     }
     return Text("Weather icon not available");
   }
+}
+
+Widget? getweatherText(int condition) {
+  if (condition < 300) {
+    return Text('good');
+  } else if (condition < 600) {
+    return Text(
+      'goodd',
+    );
+  } else if (condition == 800) {
+    return Text('gooddd');
+  } else if (condition <= 804) {
+    return Text('goodddd');
+  }
+  return Text("Weather icon not available");
 }
