@@ -123,45 +123,47 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                     DateFormat('d MMM, yyy').format(date),
                                     style: GoogleFonts.lato(
                                         fontSize: 16, color: Colors.white),
-                                  )
+                                  ),
                                 ],
-                              )
+                              ),
+                              Text(
+                                '$temp\u2103',
+                                style: GoogleFonts.lato(
+                                  fontSize: 85,
+                                  height: 0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ]),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              '$temp\u2103',
-                              style: GoogleFonts.lato(
-                                  fontSize: 85,
-                                  height: 5.66,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 1,
-                                ),
-                                icon!,
-                                SizedBox(
-                                  height: 1,
-                                ),
-                                Text(
-                                  '$des',
-                                  style: GoogleFonts.lato(
-                                    fontSize: 16,
-                                    color: Colors.white,
+                            Center(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                    child: Text(
+                                      '$des',
+                                      style: GoogleFonts.lato(
+                                        fontSize: 35,
+                                        color: Colors.white,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: 1,
-                                ),
-                                weatherText ??
-                                    Text("Weather text not available"),
-                              ],
+                                  SizedBox(height: 20),
+                                  icon!,
+                                  SizedBox(height: 10),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0, 10, 0, 230),
+                                    child: weatherText ??
+                                        Text("Weather text not available"),
+                                  ),
+                                  SizedBox(height: 10),
+                                ],
+                              ),
                             )
                           ],
                         )

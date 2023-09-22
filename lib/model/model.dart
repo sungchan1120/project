@@ -25,9 +25,7 @@ class Model {
         ),
       );
     } else if (condition == 800) {
-      return Container(
-        color: Color.fromARGB(148, 0, 0, 0),
-      );
+      return Container(color: Colors.blue);
     } else if (condition <= 804) {
       return Container(
         decoration: BoxDecoration(
@@ -49,19 +47,26 @@ class Model {
     if (condition < 300) {
       return SvgPicture.asset(
         'assets/images/colud_lightning.svg',
+        width: 120,
+        height: 120,
       );
     } else if (condition < 600) {
       return SvgPicture.asset(
         'assets/images/sun_fill.svg',
+        width: 120,
+        height: 120,
       );
     } else if (condition == 800) {
       return SvgPicture.asset(
         'assets/images/sun_fill.svg',
-        fit: BoxFit.cover,
+        width: 120,
+        height: 120,
       );
     } else if (condition <= 804) {
       return SvgPicture.asset(
         'assets/images/cloud_sun.svg',
+        width: 120,
+        height: 120,
       );
     }
     return Text("Weather icon not available");
