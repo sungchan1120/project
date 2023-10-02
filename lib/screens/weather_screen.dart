@@ -19,6 +19,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget? background;
   Widget? weatherText;
   Widget? icon;
+  String? koreanDes;
   var date = DateTime.now();
   String? des;
   @override
@@ -39,6 +40,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
     setState(() {
       weatherText = getweatherText(condition);
+    });
+
+    setState(() {
+      koreanDes = model.getKoreanDescription(des!); // 영어에서 한글로 번역
     });
 
     setState(() {
@@ -144,9 +149,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
                                     child: Text(
-                                      '$des',
+                                      koreanDes ?? '', // 한글 날씨 설명 출력
                                       style: GoogleFonts.lato(
                                         fontSize: 35,
                                         color: Colors.white,
@@ -157,7 +162,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                   icon!,
                                   SizedBox(height: 10),
                                   Container(
-                                    margin: EdgeInsets.fromLTRB(0, 10, 0, 230),
+                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 230),
                                     child: weatherText ??
                                         Text("Weather text not available"),
                                   ),
@@ -170,111 +175,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       ],
                     ),
                   ),
-                  Column(
-                    children: [
-                      Divider(
-                        height: 15,
-                        thickness: 2,
-                        color: Colors.white,
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            'AQI(대기질지수)',
-                            style: GoogleFonts.lato(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Image.asset(
-                            'assets/images/bad.png',
-                            width: 37,
-                            height: 35,
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            '매우나쁨',
-                            style: GoogleFonts.lato(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            '미세먼지',
-                            style: GoogleFonts.lato(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            '99.99',
-                            style: GoogleFonts.lato(
-                              fontSize: 24,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            '㎍/m3',
-                            style: GoogleFonts.lato(
-                                fontSize: 14.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            '초미세먼지',
-                            style: GoogleFonts.lato(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            '99.99',
-                            style: GoogleFonts.lato(
-                              fontSize: 24,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            '㎍/m3',
-                            style: GoogleFonts.lato(
-                                fontSize: 14.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
                 ],
               ),
             )

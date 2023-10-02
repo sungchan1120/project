@@ -43,6 +43,18 @@ class Model {
     );
   }
 
+  String getKoreanDescription(String englishDescription) {
+    final Map<String, String> descriptionMap = {
+      'rain': '비',
+      'snow': '눈',
+      'clear sky': '맑음',
+      'few clouds': '구름조금',
+      // 다른 날씨에 대한 매핑 추가
+    };
+
+    return descriptionMap[englishDescription] ?? englishDescription;
+  }
+
   Widget? getWeatherIcon(int condition) {
     if (condition < 300) {
       return SvgPicture.asset(
@@ -75,15 +87,15 @@ class Model {
 
 Widget? getweatherText(int condition) {
   if (condition < 300) {
-    return Text('good');
+    return Text('비가 올수 있으니 조심하세요');
   } else if (condition < 600) {
     return Text(
-      'goodd',
+      '눈이 올수도 있어요',
     );
   } else if (condition == 800) {
-    return Text('gooddd');
+    return Text('날씨 완전 좋음');
   } else if (condition <= 804) {
-    return Text('goodddd');
+    return Text('구름낀 하늘이라....');
   }
   return Text("Weather icon not available");
 }
