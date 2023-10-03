@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Model {
   Widget? getWeatherBackground(int condition) {
@@ -49,6 +50,7 @@ class Model {
       'snow': '눈',
       'clear sky': '맑음',
       'few clouds': '구름조금',
+      'broken clouds': '구름',
       // 다른 날씨에 대한 매핑 추가
     };
 
@@ -87,15 +89,18 @@ class Model {
 
 Widget? getweatherText(int condition) {
   if (condition < 300) {
-    return Text('비가 올수 있으니 조심하세요');
+    return Text('비가 올수 있으니 조심하세요',
+        style: GoogleFonts.lato(fontSize: 25, color: Colors.white));
   } else if (condition < 600) {
-    return Text(
-      '눈이 올수도 있어요',
-    );
+    return Text('눈이 올수도 있어요',
+        style: GoogleFonts.lato(fontSize: 25, color: Colors.white));
   } else if (condition == 800) {
-    return Text('날씨 완전 좋음');
+    return Text('날씨 완전 좋음',
+        style: GoogleFonts.lato(fontSize: 25, color: Colors.white));
   } else if (condition <= 804) {
-    return Text('구름낀 하늘이라....');
+    return Text('구름낀 하늘이라....',
+        style: GoogleFonts.lato(fontSize: 25, color: Colors.white));
   }
-  return Text("Weather icon not available");
+  return Text("Weather icon not available",
+      style: GoogleFonts.lato(fontSize: 25, color: Colors.white));
 }

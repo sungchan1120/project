@@ -149,7 +149,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
+                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                     child: Text(
                                       koreanDes ?? '', // 한글 날씨 설명 출력
                                       style: GoogleFonts.lato(
@@ -158,11 +158,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 20),
+                                  SizedBox(height: 10),
                                   icon!,
                                   SizedBox(height: 10),
                                   Container(
-                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 230),
+                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 300),
                                     child: weatherText ??
                                         Text("Weather text not available"),
                                   ),

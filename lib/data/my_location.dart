@@ -7,7 +7,7 @@ class MyLocation {
   Future<void> getMyCurrentLocation() async {
     try {
       LocationPermission permission =
-          await Geolocator.requestPermission(); //비동기 처리
+          await Geolocator.requestPermission(); //비동기 처리 위치 권한 요청
       Geolocator.requestPermission();
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
