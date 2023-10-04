@@ -28,6 +28,41 @@ class _WeatherScreenState extends State<WeatherScreen> {
     updateData(widget.parseWeatherData);
   }
 
+  TextEditingController searchController =
+      TextEditingController(); // 추가: 검색창 컨트롤러
+
+  void _showSearchDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Search City'),
+          content: TextField(
+            controller: searchController, // 추가: 검색창에 입력된 값 관리
+            decoration: InputDecoration(
+              hintText: 'Enter city name',
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // 닫기
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                String cityName = searchController.text;
+                Navigator.of(context).pop();
+              },
+              child: Text('Search'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void updateData(dynamic weatherData) {
     double temp2 = weatherData['main']['temp'];
     int condition = weatherData['weather'][0]['id'];
@@ -74,8 +109,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
         actions: [
           IconButton(
             icon: Icon(Icons.location_searching),
-            onPressed: () {},
-            iconSize: 30,
+            onPressed: _showSearchDialog,
+            iconSize: 40,
           )
         ],
       ),

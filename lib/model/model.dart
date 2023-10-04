@@ -46,11 +46,58 @@ class Model {
 
   String getKoreanDescription(String englishDescription) {
     final Map<String, String> descriptionMap = {
+      '	thunderstorm with light rain': '천둥번개',
+      '	thunderstorm with rain': '천둥번개',
+      '	thunderstorm with heavy rain': '천둥번개',
+      '	light thunderstorm': '천둥번개',
+      '	thunderstorm': '천둥번개',
+      '	heavy thunderstorm': '천둥번개',
+      '	ragged thunderstorm': '천둥번개',
+      '	thunderstorm with light drizzle': '천둥번개',
+      '	thunderstorm with drizzle': '천둥번개',
+      '	thunderstorm with heavy drizzle': '천둥번개',
+      // 천둥번개
+      '	light intensity drizzle': '이슬비',
+      '	drizzle': '이슬비',
+      '	heavy intensity drizzle': '이슬비',
+      '	light intensity drizzle rain': '이슬비',
+      '	drizzle rain': '이슬비',
+      '	heavy intensity drizzle rain': '이슬비',
+      '	shower rain and drizzle': '이슬비',
+      '	heavy shower rain and drizzle': '이슬비',
+      '	shower drizzle': '이슬비',
+      //이슬비
+      '	light rain': '비',
+      '	moderate rain': '비',
+      '	heavy intensity rain': '비',
+      '	very heavy rain': '비',
+      '	extreme rain': '비',
       'rain': '비',
-      'snow': '눈',
-      'clear sky': '맑음',
-      'few clouds': '구름조금',
+      '	freezing rain': '비',
+      'light intensity shower rain': '비',
+      '	shower rain': '비',
+      '	heavy intensity shower rain': '비',
+      '	ragged shower rain': '비',
+      //비
+      '	light snow': '눈',
+      '	snow': '눈',
+      '	heavy snow': '눈',
+      '	sleet': '눈',
+      '	light shower sleet': '눈',
+      '	shower sleet': '눈',
+      '	light rain and snow': '눈',
+      'rain and snow': '눈',
+      '	light shower snow': '눈',
+      '	shower snow': '눈',
+      '	heavy shower snow': '눈',
+      //눈
+      'scattered clouds:': '구름',
+      'overcast clouds': '구름',
+      'few clouds': '구름',
       'broken clouds': '구름',
+      //구름
+      'clear sky': '맑음',
+      //맑음
       // 다른 날씨에 대한 매핑 추가
     };
 
@@ -66,7 +113,7 @@ class Model {
       );
     } else if (condition < 600) {
       return SvgPicture.asset(
-        'assets/images/sun_fill.svg',
+        'assets/images/cloud_snow_alt.svg',
         width: 120,
         height: 120,
       );
@@ -92,7 +139,7 @@ Widget? getweatherText(int condition) {
     return Text('비가 올수 있으니 조심하세요',
         style: GoogleFonts.lato(fontSize: 25, color: Colors.white));
   } else if (condition < 600) {
-    return Text('눈이 올수도 있어요',
+    return Text('이슬비',
         style: GoogleFonts.lato(fontSize: 25, color: Colors.white));
   } else if (condition == 800) {
     return Text('날씨 완전 좋음',
