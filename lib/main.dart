@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/screens/loading.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 void main() {
   runApp(MyApp());

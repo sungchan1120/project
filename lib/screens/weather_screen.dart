@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project/screens/drawer.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:project/model/model.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class WeatherScreen extends StatefulWidget {
   WeatherScreen({this.parseWeatherData});
@@ -26,41 +28,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
   void initState() {
     super.initState();
     updateData(widget.parseWeatherData);
-  }
-
-  TextEditingController searchController =
-      TextEditingController(); // 추가: 검색창 컨트롤러
-
-  void _showSearchDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Search City'),
-          content: TextField(
-            controller: searchController, // 추가: 검색창에 입력된 값 관리
-            decoration: InputDecoration(
-              hintText: 'Enter city name',
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // 닫기
-              },
-              child: Text('Cancel'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                String cityName = searchController.text;
-                Navigator.of(context).pop();
-              },
-              child: Text('Search'),
-            ),
-          ],
-        );
-      },
-    );
   }
 
   void updateData(dynamic weatherData) {
@@ -101,19 +68,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
         // title: Text(''),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.near_me),
-          onPressed: () {},
-          iconSize: 30,
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.location_searching),
-            onPressed: _showSearchDialog,
-            iconSize: 40,
-          )
-        ],
       ),
+      drawer: MenuDrawer(),
       body: Container(
         child: Stack(
           children: [
@@ -135,7 +91,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 height: 150,
                               ),
                               Text(
-                                '$cityName',
+                                tr('$cityName'),
                                 style: GoogleFonts.lato(
                                     fontSize: 35,
                                     fontWeight: FontWeight.bold,

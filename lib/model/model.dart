@@ -105,9 +105,15 @@ class Model {
   }
 
   Widget? getWeatherIcon(int condition) {
-    if (condition < 300) {
+    if (condition < 200) {
       return SvgPicture.asset(
         'assets/images/colud_lightning.svg',
+        width: 120,
+        height: 120,
+      );
+    } else if (condition < 500) {
+      return SvgPicture.asset(
+        'assets/images/cloud_rain.svg',
         width: 120,
         height: 120,
       );
@@ -135,14 +141,14 @@ class Model {
 }
 
 Widget? getweatherText(int condition) {
-  if (condition < 300) {
-    return Text('비가 올수 있으니 조심하세요',
+  if (condition < 233) {
+    return Text('천둥이 칠것 같아요!',
         style: GoogleFonts.lato(fontSize: 25, color: Colors.white));
-  } else if (condition < 600) {
-    return Text('이슬비',
+  } else if (condition < 531) {
+    return Text('비가 내리니 우산을 챙기는걸 권장해요!',
         style: GoogleFonts.lato(fontSize: 25, color: Colors.white));
   } else if (condition == 800) {
-    return Text('날씨 완전 좋음',
+    return Text('날씨가 맑은데 운동한번 어떤가요?',
         style: GoogleFonts.lato(fontSize: 25, color: Colors.white));
   } else if (condition <= 804) {
     return Text('구름낀 하늘이라....',
