@@ -40,7 +40,6 @@ dependencies:
   flutter_svg: ^2.0.7
   timer_builder: ^2.0.0
   intl: ^0.18.1
-  easy_localization: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -81,7 +80,6 @@ flutter:
     - assets/images/moderate.png
     - assets/images/poor.png
     - assets/images/bad.png
-    - translations/
 
 
 

@@ -5,7 +5,6 @@ import 'package:project/screens/drawer.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:project/model/model.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class WeatherScreen extends StatefulWidget {
   WeatherScreen({this.parseWeatherData});
@@ -91,7 +90,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 height: 150,
                               ),
                               Text(
-                                tr('$cityName'),
+                                ('$cityName'),
                                 style: GoogleFonts.lato(
                                     fontSize: 35,
                                     fontWeight: FontWeight.bold,

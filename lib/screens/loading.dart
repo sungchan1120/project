@@ -1,62 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:project/data/my_location.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:project/data/network.dart';
 import 'package:project/screens/weather_screen.dart';
 
-const apikey = '848066366a50df17d81b4e2340b02969'; // 날씨 api,const사용은 불변
+const apiKey = '848066366a50df17d81b4e2340b02969'; // 여기에 사용할 API 키를 넣어주세요
 
 class Loading extends StatefulWidget {
+  final String city; // 도시명
+  final double latitude; // 위도
+  final double longitude; // 경도
+
+  Loading({
+    required this.city,
+    required this.latitude,
+    required this.longitude,
+  });
+
   @override
   _LoadingState createState() => _LoadingState();
 }
 
 class _LoadingState extends State<Loading> {
-  late double latitude3; //위도 3
-  late double longgitude3; //경도 3
   @override
   void initState() {
-    // setstate로 생명주기
     super.initState();
     getLocation();
   }
 
-  void getLocation() async {
-    // 비동기 처리
+  Future<void> getLocation() async {
     MyLocation myLocation = MyLocation();
-    await myLocation.getMyCurrentLocation(); // 현재 위치를 가져옴
-    latitude3 = myLocation.latitude2;
-    longgitude3 = myLocation.longitude2;
-    print(latitude3); //콘솔에 위도 경도 출력
-    print(longgitude3);
-    //날씨,공기 품질 데이터를 가져오기 위한 네트워크 요청
+    myLocation.latitude2 = widget.latitude;
+    myLocation.longitude2 = widget.longitude;
+
     Network network = Network(
-        'https://api.openweathermap.org/data/2.5/weather?lat=$latitude3&lon=$longgitude3&appid=$apikey&units=metric',
-        'https://api.openweathermap.org/data/2.5/air-pollution?lat=$latitude3&lon=$longgitude3&appid=$apikey');
+      'https://api.openweathermap.org/data/2.5/weather?lat=${widget.latitude}&lon=${widget.longitude}&appid=$apiKey&units=metric',
+      'https://api.openweathermap.org/data/2.5/air-pollution?lat=${widget.latitude}&lon=${widget.longitude}&appid=$apiKey',
+    );
 
-    var weatherData = await network.getJsonData(); //날씨 데이터 가져오기
-    print(weatherData);
+    try {
+      var weatherData = await network.getJsonData();
+      print('Weather Data for ${widget.city}: $weatherData');
 
-    var airData = await network.getAirData();
-    print(airData);
-    // 날씨 화면으로 전달
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return WeatherScreen(
-        parseWeatherData: weatherData,
-      );
-    }));
+      var airData = await network.getAirData();
+      print('Air Data for ${widget.city}: $airData');
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return WeatherScreen(
+          parseWeatherData: weatherData,
+        );
+      }));
+    } catch (e) {
+      print('Error getting weather data: $e');
+    }
   }
-
-  // void fetchData() async {
-
-  //     var myJson = parsingData['weather'][0]['description'];
-  //     print(myJson);
-  //     var wind = parsingData(jsonData)['windy']['speed'];
-  //     print(wind);
-  //   } else {
-  //     print(response.statusCode);
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +62,7 @@ class _LoadingState extends State<Loading> {
           onPressed: () {
             getLocation();
           },
-          child: Text('get my location'),
+          child: Text('Get Weather for ${widget.city}'),
         ),
       ),
     );

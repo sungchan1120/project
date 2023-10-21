@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project/screens/loading.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +13,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Loading(),
+      home: Loading(
+        city: 'Seoul',
+        latitude: 37.5665,
+        longitude: 126.9780,
+      ),
     );
   }
 }
