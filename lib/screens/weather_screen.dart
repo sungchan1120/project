@@ -1,21 +1,22 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; //필요한 각종 패키지들
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project/screens/drawer.dart';
 import 'package:timer_builder/timer_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:project/model/model.dart';
+import 'package:weather_animation/weather_animation.dart';
 
 class WeatherScreen extends StatefulWidget {
   WeatherScreen({this.parseWeatherData});
   final dynamic parseWeatherData;
   @override
-  _WeatherScreenState createState() => _WeatherScreenState();
+  WeatherScreenState createState() => WeatherScreenState();
 }
 
-class _WeatherScreenState extends State<WeatherScreen> {
+class WeatherScreenState extends State<WeatherScreen> {
   Model model = Model();
-  String? cityName;
+  String? cityName; //State 클래스에서 사용할 변수 및 메소드들이 정의되어 있음.
   int? temp;
   Widget? background;
   Widget? weatherText;
@@ -30,6 +31,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   }
 
   void updateData(dynamic weatherData) {
+    // 날씨 데이터를 받아와서 UI를 업데이트하는 메소드
     double temp2 = weatherData['main']['temp'];
     int condition = weatherData['weather'][0]['id'];
     des = weatherData['weather'][0]['description'];
@@ -157,6 +159,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                         Text("Weather text not available"),
                                   ),
                                   SizedBox(height: 10),
+                                  // Container(
+                                  //   margin: EdgeInsets.fromLTRB(0, 0, 0, 300),
+                                  //   child: weatherText ??
+                                  //       Text("Weather text not available"),
+                                  // ),
                                 ],
                               ),
                             )

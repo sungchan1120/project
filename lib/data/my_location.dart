@@ -6,11 +6,11 @@ class MyLocation {
 
   Future<void> getMyCurrentLocation() async {
     try {
+      //에러를 대비해서 try/catch 구문 사용
       LocationPermission permission =
           await Geolocator.requestPermission(); //비동기 처리 위치 권한 요청
-      Geolocator.requestPermission();
       Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
+          desiredAccuracy: LocationAccuracy.reduced);
       latitude2 = position.latitude;
       longitude2 = position.longitude;
     } catch (e) {
